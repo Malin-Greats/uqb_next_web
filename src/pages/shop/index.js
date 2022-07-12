@@ -87,8 +87,7 @@ const Shop = ({ books }) => {
 
 // get all recent books from the database
 export async function getStaticProps() {
-    const res = await fetch(`${server}/author/store-book-list`);
-    const books = await res.json();
+    const books = await (await fetch(`${server}/author/store-book-list`)).json();
 
     if (!books) return null;
 
