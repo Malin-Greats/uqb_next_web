@@ -1,5 +1,6 @@
 // react
 import React, { useState } from 'react';
+import { useRouter } from "next/router";
 
 // next Link
 import { Link } from 'next/link';
@@ -25,12 +26,15 @@ const Wrapper = styled(Box)({
 });
 
 const Shop = ({ books }) => {
+    const router = useRouter();
     const pageSize = 2;
     const [pagination, setPagination] = useState({
         count: 0,
         to: 0,
         to: pageSize,
     });
+
+    if (router.isFallback) return <div>Loading...</div>;
 
     return (
         <Wrapper>
