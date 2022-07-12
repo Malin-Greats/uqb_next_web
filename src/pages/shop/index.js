@@ -90,6 +90,8 @@ export async function getStaticProps() {
     const res = await fetch(`${server}/author/store-book-list`);
     const books = await res.json();
 
+    if (!books) return null;
+
     return {
         props: {
             books,
