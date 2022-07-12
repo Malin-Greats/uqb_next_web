@@ -25,16 +25,21 @@ const Wrapper = styled(Box)({
     overflowX: 'hidden',
 });
 
-const Shop = ({ books }) => {
-    const router = useRouter();
+const books = [
+    { title: 'The Lord of the Rings', price: '$10.00', cover: 'https://images-na.ssl-images-amazon.com/images/I/51Zr%2Bt5zLWL.jpg' },
+    { title: 'The Hobbit', price: '$10.00', cover: 'https://images-na.ssl-images-amazon.com/images/I/51Zr%2Bt5zLWL.jpg' },
+    { title: 'The Lord of the Rings', price: '$10.00', cover: 'https://images-na.ssl-images-amazon.com/images/I/51Zr%2Bt5zLWL.jpg' },
+    { title: 'The Hobbit', price: '$10.00', cover: 'https://images-na.ssl-images-amazon.com/images/I/51Zr%2Bt5zLWL.jpg' },
+    { title: 'The Lord of the Rings', price: '$10.00', cover: 'https://images-na.ssl-images-amazon.com/images/I/51Zr%2Bt5zLWL.jpg' },
+]
+
+const Shop = () => {
     const pageSize = 2;
     const [pagination, setPagination] = useState({
         count: 0,
         to: 0,
         to: pageSize,
     });
-
-    if (router.isFallback) return <div>Loading...</div>;
 
     return (
         <Wrapper>
@@ -90,16 +95,16 @@ const Shop = ({ books }) => {
 };
 
 // get all recent books from the database
-export async function getStaticProps() {
-    const books = await (await fetch(`${server}/author/store-book-list`)).json();
+// export async function getStaticProps() {
+//     const books = await (await fetch(`${server}/author/store-book-list`)).json();
 
-    if (!books) return null;
+//     if (!books) return null;
 
-    return {
-        props: {
-            books,
-        }
-    };
-};
+//     return {
+//         props: {
+//             books,
+//         }
+//     };
+// };
 
 export default Shop;
